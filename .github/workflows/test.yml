@@ -2,7 +2,7 @@ name: Test
 
 on:
   release:
-    types: [prereleased]
+    types: [released]
 
 jobs:
   test:
