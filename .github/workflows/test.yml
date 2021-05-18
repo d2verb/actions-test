@@ -3,6 +3,9 @@ name: Test
 on:
   release:
     types: [prereleased]
+    tags:
+      - v1
+      - v1.*
 
 jobs:
   test:
