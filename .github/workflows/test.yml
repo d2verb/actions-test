@@ -3,12 +3,10 @@ name: Test
 on:
   release:
     types: [prereleased]
-    tags:
-      - v1
-      - v1.*
 
 jobs:
   test:
+    if: ${{ github.event.release.prerelease && startsWith(github.event.release.tag_name, 'v1') }}
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello World!"
