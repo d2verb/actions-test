@@ -18,7 +18,7 @@ jobs:
         run: |
           if [[ ${{ github.event.inputs.tag }} =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z]*(-[0-9]*)?)?$ ]]; then
               echo "OK passed!"
-              echo ::set-output name=match::true
+              echo "::set-output name=match::true"
           fi
       - name: exit if validation failed
         if: steps.validate_tag.match != 'true'
