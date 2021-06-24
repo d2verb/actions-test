@@ -9,6 +9,7 @@ jobs:
     if: ${{ startsWith(github.event.release.tag_name, 'v1') }}
     runs-on: ubuntu-latest
     steps:
+      - run: exit 1
       - run: echo "Hello World!"
       
   post-test:
