@@ -20,7 +20,7 @@ jobs:
               echo ::set-output name=match::true
           fi
       - name: exit if validation failed
-        if: steps.check-tag.validate_tag.match != 'true'
+        if: steps.validate_tag.match != 'true'
         run: exit 1
       - name: Create tag
         uses: actions/github-script@v3
