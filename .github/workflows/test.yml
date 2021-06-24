@@ -21,7 +21,7 @@ jobs:
           fi
       - name: exit if validation failed
         if: steps.validate_tag.match != 'true'
-        run: echo ${{ stesp.validate_tag.match }}
+        run: echo ${{ steps.validate_tag.match }}
       - name: Create tag
         uses: actions/github-script@v3
         with:
