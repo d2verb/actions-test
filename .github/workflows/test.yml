@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    if: ${{ startsWith(github.event.release.tag_name, 'v1') }}
+    if: ${{ startsWith(github.event.inputs.tag, 'v2') }}
     runs-on: ubuntu-latest
     steps:
       - name: Validate Tag by Regex
