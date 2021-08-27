@@ -15,5 +15,5 @@ jobs:
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
       - name: Dump release version
         env:
-          VERSION: {{ steps.get_version.outputs.VERSION }}
+          VERSION: ${{ steps.get_version.outputs.VERSION }}
         run: echo $VERSION
