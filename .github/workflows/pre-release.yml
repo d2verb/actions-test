@@ -1,0 +1,19 @@
+name: Prerelease
+
+on:
+  release:
+    types: [prereleased]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Get the release version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      - name: Dump release version
+        env:
+          VERSION: {{ steps.get_version.outputs.VERSION }}
+        run: echo $VERSION
