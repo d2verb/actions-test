@@ -1,0 +1,25 @@
+name: StgRelease
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create tag string
+        id: create_tag_string
+        run: |
+          TAG=${{ github.ref_name }}-stg-`date +%Y%m%d%H%M%S`
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+      - name: Create tag
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            github.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/${{ steps.create_tag_string.outputs.tag }}",
+              sha: context.sha
+            })
